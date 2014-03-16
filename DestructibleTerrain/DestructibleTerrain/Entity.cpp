@@ -30,6 +30,8 @@ void Entity::update()
 		{
 			mHitbox.move(0, -mFallVelocity);
 		}
+
+		mFallVelocity = 1;
 	}
 }
 

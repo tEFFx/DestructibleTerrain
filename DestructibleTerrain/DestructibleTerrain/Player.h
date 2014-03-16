@@ -12,5 +12,7 @@ public:
 
 private:
 	Player(void);
+	bool mJump;
+	float mSpeed;
 };
 
