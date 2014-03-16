@@ -11,6 +11,7 @@ public:
 
 	void draw(sf::RenderWindow& window);
 	void createHole(sf::Vector2f pos, float radius);
+	sf::Image* getTerrainImage();
 
 private:
 	Terrain(void);

@@ -64,3 +64,8 @@ void Terrain::createHole(sf::Vector2f pos, float radius)
 	mHoles.push_back(temp);
 	mChanged = true;
 }
+
+sf::Image* Terrain::getTerrainImage()
+{
+	return &mTerrain.copyToImage();
+}
