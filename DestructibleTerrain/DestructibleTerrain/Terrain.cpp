@@ -3,10 +3,7 @@
 
 Terrain::Terrain(void)
 {
-	mRenderTexture.create(1280, 720);
-	mTempTerrain.setSize(sf::Vector2f(1280, 500));
-	mTempTerrain.setPosition(0, 220);
-	mChanged = true;
+	load();
 }
 
 
@@ -21,12 +18,22 @@ Terrain& Terrain::getInstance()
 	return instance;
 }
 
+void Terrain::load()
+{
+	mRenderTexture.create(1280, 720);
+	sf::Texture* temp = new sf::Texture;
+	temp->loadFromFile("terrain.png");
+	mTerrainSpr.setTexture(*temp);
+	mTerrainSpr.setPosition(0, 0);
+	mChanged = true;
+}
+
 void Terrain::draw(sf::RenderWindow& window)
 {
 	if(mChanged == true)
 	{
-		mRenderTexture.clear(sf::Color::Blue);
-		mRenderTexture.draw(mTempTerrain);
+		mRenderTexture.clear(sf::Color::Color(255, 255, 255, 0));
+		mRenderTexture.draw(mTerrainSpr);
 
 		for(auto it = mHoles.begin();
 			it != mHoles.end();

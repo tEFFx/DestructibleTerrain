@@ -15,9 +15,10 @@ public:
 private:
 	Terrain(void);
 	~Terrain(void);
+	void load();
 
 	sf::RenderTexture mRenderTexture;
-	sf::RectangleShape mTempTerrain;
+	sf::Sprite mTerrainSpr;
 	sf::Texture mTerrain;
 	Holes mHoles;
 	bool mChanged;
