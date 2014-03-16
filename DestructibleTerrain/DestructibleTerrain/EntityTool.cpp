@@ -12,10 +12,19 @@ Entity* EntityTool::newBomb(sf::Vector2f pos)
 void EntityTool::update()
 {
 	for(auto it = mEntites.begin();
-		it != mEntites.end();
-		it++)
+		it != mEntites.end();)
 	{
 		(*it)->update();
+
+		if((*it)->checkDestroy())
+		{
+			delete (*it);
+			it = mEntites.erase(it);
+		}
+
+		else{
+			it++;
+		}
 	}
 }
 

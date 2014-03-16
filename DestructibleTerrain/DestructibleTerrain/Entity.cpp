@@ -5,6 +5,7 @@ Entity::Entity(void)
 {
 	mGravity = 9.82f;
 	mFallVelocity = 0;
+	mDestroy = false;
 }
 
 
@@ -54,4 +55,14 @@ bool Entity::checkPixelCollision(sf::Image* image)
 	else{
 		return false;
 	}
+}
+
+void Entity::destroy()
+{
+	mDestroy = true;
+}
+
+bool Entity::checkDestroy()
+{
+	return mDestroy;
 }

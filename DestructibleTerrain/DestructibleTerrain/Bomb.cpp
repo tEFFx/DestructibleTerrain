@@ -22,4 +22,10 @@ Entity* Bomb::newBomb(sf::Vector2f pos)
 void Bomb::update()
 {
 	Entity::update();
+
+	if(checkPixelCollision(Terrain::getInstance().getTerrainImage()))
+	{
+		Terrain::getInstance().createHole(mHitbox.getPosition(), 100);
+		destroy();
+	}
 }
