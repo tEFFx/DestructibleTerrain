@@ -42,8 +42,8 @@ void Entity::draw(sf::RenderWindow& window)
 
 bool Entity::checkPixelCollision(sf::Image& image, sf::Vector2f offset)
 {
-	if(mHitbox.getPosition().x >= 0 &&
-		mHitbox.getPosition().y >= 0 &&
+	if(mHitbox.getPosition().x + offset.x >= 0 &&
+		mHitbox.getPosition().y + offset.y >= 0 &&
 		mHitbox.getPosition().x + offset.x <= image.getSize().x &&
 		mHitbox.getPosition().y + offset.y <= image.getSize().y &&
 		image.getPixel(mHitbox.getPosition().x + offset.x, mHitbox.getPosition().y + offset.y).a != 0)

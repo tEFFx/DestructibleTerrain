@@ -65,4 +65,9 @@ void Player::update()
 	{
 		mHitbox.move(mSpeed, 0);
 	}
+
+	while(checkPixelCollision(Terrain::getInstance().getTerrainImage(), sf::Vector2f(0, -40)))
+	{
+		mHitbox.move(0, mFallVelocity);
+	}
 }
