@@ -4,7 +4,7 @@
 Entity::Entity(void)
 {
 	mGravity = 9.82f;
-	mFallVelocity = 0;
+	mFallVelocity = 1;
 	mDestroy = false;
 }
 
@@ -16,7 +16,7 @@ Entity::~Entity(void)
 
 void Entity::update()
 {
-	if(!checkPixelCollision(Terrain::getInstance().getTerrainImage()))
+	if(!checkPixelCollision(Terrain::getInstance().getTerrainImage(), sf::Vector2f(0, mHitbox.getSize().y/2)))
 	{
 		mFallTime = mFallTimer.getElapsedTime();
 		mFallVelocity = mGravity * mFallTime.asSeconds();
@@ -25,6 +25,11 @@ void Entity::update()
 
 	else{
 		mFallTimer.restart();
+
+		while(checkPixelCollision(Terrain::getInstance().getTerrainImage(), sf::Vector2f(0, mHitbox.getSize().y/2)))
+		{
+			mHitbox.move(0, -mFallVelocity);
+		}
 	}
 }
 

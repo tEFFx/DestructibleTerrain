@@ -23,7 +23,7 @@ void Bomb::update()
 {
 	Entity::update();
 
-	if(checkPixelCollision(Terrain::getInstance().getTerrainImage()))
+	if(checkPixelCollision(Terrain::getInstance().getTerrainImage(), sf::Vector2f(0, mHitbox.getSize().y/2)))
 	{
 		Terrain::getInstance().createHole(mHitbox.getPosition(), 100);
 		destroy();
