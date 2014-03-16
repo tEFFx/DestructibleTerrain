@@ -10,8 +10,8 @@ public:
 
 	virtual void update();
 	virtual void draw(sf::RenderWindow& window);
-	bool checkPixelCollision(sf::Image* image, sf::Vector2f offset);
-	bool checkPixelCollision(sf::Image* image);
+	bool checkPixelCollision(sf::Image& image, sf::Vector2f offset);
+	bool checkPixelCollision(sf::Image& image);
 	bool checkDestroy();
 
 protected:
@@ -20,6 +20,7 @@ protected:
 	void destroy();
 
 	sf::RectangleShape mHitbox;
+
 	float mGravity;
 	float mFallVelocity;
 

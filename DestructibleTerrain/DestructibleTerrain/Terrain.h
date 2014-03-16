@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include <vector>
+#include <iostream>
 
 typedef std::vector<sf::CircleShape> Holes;
 
@@ -11,7 +12,7 @@ public:
 
 	void draw(sf::RenderWindow& window);
 	void createHole(sf::Vector2f pos, float radius);
-	sf::Image* getTerrainImage();
+	sf::Image& getTerrainImage();
 
 private:
 	Terrain(void);

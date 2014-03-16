@@ -33,9 +33,9 @@ void Entity::draw(sf::RenderWindow& window)
 	window.draw(mHitbox);
 }
 
-bool Entity::checkPixelCollision(sf::Image* image, sf::Vector2f offset)
+bool Entity::checkPixelCollision(sf::Image& image, sf::Vector2f offset)
 {
-	if(image->getPixel(mHitbox.getPosition().x + offset.x, mHitbox.getPosition().y + offset.y).a != 0)
+	if(image.getPixel(mHitbox.getPosition().x + offset.x, mHitbox.getPosition().y + offset.y).a != 0)
 	{
 		return true;
 	}
@@ -45,9 +45,13 @@ bool Entity::checkPixelCollision(sf::Image* image, sf::Vector2f offset)
 	}
 }
 
-bool Entity::checkPixelCollision(sf::Image* image)
+bool Entity::checkPixelCollision(sf::Image& image)
 {
-	if(image->getPixel(mHitbox.getPosition().x, mHitbox.getPosition().y).a != 0)
+	if(mHitbox.getPosition().x >= 0 &&
+		mHitbox.getPosition().y >= 0 &&
+		mHitbox.getPosition().x <= image.getSize().x &&
+		mHitbox.getPosition().y <= image.getSize().y &&
+		image.getPixel(mHitbox.getPosition().x, mHitbox.getPosition().y).a != 0)
 	{
 		return true;
 	}

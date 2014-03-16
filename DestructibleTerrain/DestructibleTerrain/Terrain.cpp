@@ -48,6 +48,8 @@ void Terrain::draw(sf::RenderWindow& window)
 		mTerrainImg.createMaskFromColor(sf::Color::Blue);
 		mTerrain.loadFromImage(mTerrainImg);
 
+		std::cout << "UPDATE" << std::endl;
+
 		mChanged = false;
 	}
 
@@ -65,7 +67,7 @@ void Terrain::createHole(sf::Vector2f pos, float radius)
 	mChanged = true;
 }
 
-sf::Image* Terrain::getTerrainImage()
+sf::Image& Terrain::getTerrainImage()
 {
-	return &mTerrainImg;
+	return mTerrainImg;
 }
