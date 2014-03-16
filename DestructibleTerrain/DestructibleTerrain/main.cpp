@@ -11,6 +11,8 @@ int main()
 	bool click = false;
 	bool focus = true;
 
+	Entity* player = EntityTool::newPlayer();
+
     while (window.isOpen())
     {
 		sf::Event event;

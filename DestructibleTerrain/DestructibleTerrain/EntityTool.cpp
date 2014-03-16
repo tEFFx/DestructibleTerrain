@@ -9,6 +9,13 @@ Entity* EntityTool::newBomb(sf::Vector2f pos)
 	return temp;
 }
 
+Entity* EntityTool::newPlayer()
+{
+	Entity* temp = Player::newPlayer();
+	mEntites.push_back(temp);
+	return temp;
+}
+
 void EntityTool::update()
 {
 	for(auto it = mEntites.begin();
