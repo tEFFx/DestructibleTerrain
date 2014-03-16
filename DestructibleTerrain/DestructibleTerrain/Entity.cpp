@@ -15,7 +15,8 @@ Entity::~Entity(void)
 
 void Entity::update()
 {
-	if(!checkPixelCollision(Terrain::getInstance().getTerrainImage()))
+	sf::Image terrain = Terrain::getInstance().getTerrainImage();
+	if(!checkPixelCollision(&terrain))
 	{
 		mFallTime = mFallTimer.getElapsedTime();
 		mFallVelocity = mGravity * mFallTime.asSeconds();

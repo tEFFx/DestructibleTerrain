@@ -11,7 +11,7 @@ public:
 
 	void draw(sf::RenderWindow& window);
 	void createHole(sf::Vector2f pos, float radius);
-	sf::Image* getTerrainImage();
+	sf::Image getTerrainImage();
 
 private:
 	Terrain(void);
@@ -20,6 +20,7 @@ private:
 
 	sf::RenderTexture mRenderTexture;
 	sf::Sprite mTerrainSpr;
+	sf::Image mTerrainImg;
 	sf::Texture mTerrain;
 	Holes mHoles;
 	bool mChanged;

@@ -44,9 +44,9 @@ void Terrain::draw(sf::RenderWindow& window)
 
 		mRenderTexture.display();
 
-		sf::Image temp = mRenderTexture.getTexture().copyToImage();
-		temp.createMaskFromColor(sf::Color::Blue);
-		mTerrain.loadFromImage(temp);
+		mTerrainImg = mRenderTexture.getTexture().copyToImage();
+		mTerrainImg.createMaskFromColor(sf::Color::Blue);
+		mTerrain.loadFromImage(mTerrainImg);
 
 		mChanged = false;
 	}
@@ -65,7 +65,7 @@ void Terrain::createHole(sf::Vector2f pos, float radius)
 	mChanged = true;
 }
 
-sf::Image* Terrain::getTerrainImage()
+sf::Image Terrain::getTerrainImage()
 {
-	return &mTerrain.copyToImage();
+	return mTerrainImg;
 }
