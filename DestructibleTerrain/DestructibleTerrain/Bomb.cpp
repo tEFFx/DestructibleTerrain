@@ -28,4 +28,9 @@ void Bomb::update()
 		Terrain::getInstance().createHole(mHitbox.getPosition(), 100);
 		destroy();
 	}
+
+	if(mHitbox.getPosition().y > 720)
+	{
+		destroy();
+	}
 }
