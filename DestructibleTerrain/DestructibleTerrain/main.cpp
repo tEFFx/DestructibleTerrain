@@ -5,6 +5,7 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1280, 720), "Destructible Terrain");
+	window.setFramerateLimit(60);
 	sf::Texture bgTexture;
 	bgTexture.loadFromFile("background.png");
 	bool click = false;

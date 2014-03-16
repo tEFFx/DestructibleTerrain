@@ -18,3 +18,8 @@ Entity* Bomb::newBomb(sf::Vector2f pos)
 {
 	return new Bomb(pos);
 }
+
+void Bomb::update()
+{
+	Entity::update();
+}

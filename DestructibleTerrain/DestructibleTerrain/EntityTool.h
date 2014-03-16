@@ -6,7 +6,7 @@
 
 typedef std::vector<Entity*> Entities;
 
-struct EntityTool
+class EntityTool
 {
 public:
 	static Entity* newBomb(sf::Vector2f pos);
@@ -15,6 +15,8 @@ public:
 	static void draw(sf::RenderWindow& window);
 
 private:
+	EntityTool(void);
+	~EntityTool(void);
 	static Entities mEntites;
 };
 

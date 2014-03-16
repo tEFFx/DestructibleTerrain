@@ -5,6 +5,7 @@ class Bomb :
 {
 public:
 	static Entity* newBomb(sf::Vector2f pos);
+	virtual void update();
 
 private:
 	Bomb(sf::Vector2f pos);
