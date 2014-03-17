@@ -7,11 +7,11 @@ class Weapon:
 {
 public:
 	virtual void update();
-	virtual void draw(sf::RenderWindow& window);
+
+	~Weapon(void);
 
 protected:
 	Weapon(void);
-	~Weapon(void);
 
 	sf::RectangleShape mHitbox;
 	sf::Clock mFireTimer;

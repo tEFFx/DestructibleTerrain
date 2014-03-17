@@ -5,7 +5,7 @@ Weapon::Weapon(void)
 {
 	mEntity = NULL;
 
-	mType = EntityType::Player;
+	mType = EntityType::Weapon;
 }
 
 
@@ -16,9 +16,22 @@ Weapon::~Weapon(void)
 
 void Weapon::update()
 {
-	
-}
+	if(mEntity == NULL)
+	{
+		Entity::update();
 
-void Weapon::draw(sf::RenderWindow& window)
-{
+		if(isCollidingWith()->getType() == EntityType::Player)
+		{
+			mEntity = isCollidingWith();
+		}
+
+		else if(isCollidingWith()->getType() == EntityType::Weapon)
+		{
+			mEntity = NULL;
+		}
+	}
+
+	else{
+		//do stuff
+	}
 }

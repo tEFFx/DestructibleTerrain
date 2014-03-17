@@ -20,6 +20,7 @@ public:
 	bool checkPixelCollision(sf::Image& image);
 	bool checkDestroy();
 	EntityType getType();
+	Entity* isCollidingWith();
 
 	static void updateAll();
 	static void drawAll(sf::RenderWindow& window);

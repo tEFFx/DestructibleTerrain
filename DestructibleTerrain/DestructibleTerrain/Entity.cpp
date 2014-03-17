@@ -90,6 +90,21 @@ Entity::EntityType Entity::getType()
 	return mType;
 }
 
+Entity* Entity::isCollidingWith()
+{
+	for(auto it = allEntities.begin();
+		it != allEntities.end();)
+	{
+		if(this != (*it) &&
+			mHitbox.getGlobalBounds().intersects((*it)->mHitbox.getGlobalBounds()))
+		{
+			return (*it);
+		}
+	}
+
+	return NULL;
+}
+
 
 void Entity::updateAll()
 {
