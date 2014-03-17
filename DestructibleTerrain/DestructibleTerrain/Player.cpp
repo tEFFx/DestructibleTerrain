@@ -29,17 +29,18 @@ void Player::update()
 {
 	Entity::update();
 
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		mHitbox.move(-mSpeed, 0);
 	}
 
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		mHitbox.move(mSpeed, 0);
 	}
 
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) &&
+	if((sf::Keyboard::isKeyPressed(sf::Keyboard::Space) ||
+		sf::Keyboard::isKeyPressed(sf::Keyboard::W)) &&
 		checkPixelCollision(Terrain::getInstance().getTerrainImage(), sf::Vector2f(0, 40)))
 	{
 		mJump = true;
@@ -54,7 +55,6 @@ void Player::update()
 			checkPixelCollision(Terrain::getInstance().getTerrainImage(), sf::Vector2f(0, 40)))
 		{
 			mJump = false;
-			std::cout << "no more jump" << std::endl;
 		}
 	}
 

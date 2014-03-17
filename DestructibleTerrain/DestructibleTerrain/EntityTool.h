@@ -8,7 +8,6 @@
 
 struct EntityTool
 {
-	static Entity* newBomb(sf::Vector2f pos);
 	static Entity* newPlayer();
 	static Entity* newBazooka(sf::Vector2f pos);
 

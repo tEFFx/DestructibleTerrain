@@ -6,6 +6,7 @@ class Bazooka :
 public:
 	static Entity* newBazooka(sf::Vector2f pos);
 
+
 private:
 	Bazooka(sf::Vector2f pos);
 	~Bazooka(void);

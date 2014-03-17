@@ -97,8 +97,9 @@ Entity::EntityType Entity::getType()
 
 Entity* Entity::isCollidingWith()
 {
-	for(auto it = allEntities.begin();
-		it != allEntities.end();
+	auto temp = allEntities;
+	for(auto it = temp.begin();
+		it != temp.end();
 		it++)
 	{
 		if(this != (*it) &&
@@ -114,11 +115,17 @@ Entity* Entity::isCollidingWith()
 
 void Entity::updateAll()
 {
+	auto temp = allEntities;
+	for(auto it = temp.begin();
+		it != temp.end();
+		it++)
+	{
+		(*it)->update();
+	}
+
 	for(auto it = allEntities.begin();
 		it != allEntities.end();)
 	{
-		(*it)->update();
-
 		if((*it)->checkDestroy())
 		{
 			delete (*it);
@@ -133,8 +140,9 @@ void Entity::updateAll()
 
 void Entity::drawAll(sf::RenderWindow& window)
 {
-	for(auto it = allEntities.begin();
-		it != allEntities.end();
+	auto temp = allEntities;
+	for(auto it = temp.begin();
+		it != temp.end();
 		it++)
 	{
 		(*it)->draw(window);

@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "Entity.h"
+#include "Bomb.h"
 
 class Weapon:
 	public Entity

@@ -1,10 +1,5 @@
 #include "EntityTool.h"
 
-Entity* EntityTool::newBomb(sf::Vector2f pos)
-{
-	return Bomb::newBomb(pos);
-}
-
 Entity* EntityTool::newPlayer()
 {
 	return Player::newPlayer();

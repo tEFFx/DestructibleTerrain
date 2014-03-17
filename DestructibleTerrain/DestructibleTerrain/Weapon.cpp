@@ -16,6 +16,8 @@ Weapon::~Weapon(void)
 
 void Weapon::update()
 {
+	static bool click = false;
+
 	if(mEntity == NULL)
 	{
 		Entity::update();
@@ -37,7 +39,16 @@ void Weapon::update()
 
 	else{
 		mHitbox.setPosition(mEntity->getBox()->getPosition());
-		//do stuff
+
+		if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && click == false)
+		{
+			Bomb::newBomb(mHitbox.getPosition(), 2, mHitbox.getRotation());
+			click = true;
+		}
+
+		else if(!sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+			click = false;
+		}
 	}
 }
 
@@ -50,8 +61,6 @@ void Weapon::draw(sf::RenderWindow& window)
 		sf::Vector2f entPos = mEntity->getBox()->getPosition();
 		sf::Vector2f mouPos = sf::Vector2f(sf::Mouse::getPosition(window));
 		float rot = atan2(mouPos.y - entPos.y, mouPos.x - entPos.x) * (180.f / 3.14159265359f);
-
-		std::cout << rot << std::endl;
 
 		mHitbox.setRotation(rot);
 	}

@@ -1,7 +1,7 @@
 #include "Bomb.h"
 
 
-Bomb::Bomb(sf::Vector2f pos)
+Bomb::Bomb(sf::Vector2f pos, float speed, float dir)
 {
 	mHitbox.setSize(sf::Vector2f(50, 50));
 	mHitbox.setPosition(pos);
@@ -9,6 +9,9 @@ Bomb::Bomb(sf::Vector2f pos)
 	mHitbox.setFillColor(sf::Color::Black);
 
 	mType = EntityType::Bomb;
+
+	mSpeed.x = speed * cos(dir);
+	mSpeed.y = speed * sin(dir);
 }
 
 
@@ -16,9 +19,9 @@ Bomb::~Bomb(void)
 {
 }
 
-Entity* Bomb::newBomb(sf::Vector2f pos)
+Entity* Bomb::newBomb(sf::Vector2f pos, float speed, float dir)
 {
-	return new Bomb(pos);
+	return new Bomb(pos, speed, dir);
 }
 
 void Bomb::update()
@@ -35,4 +38,15 @@ void Bomb::update()
 	{
 		destroy();
 	}
+
+	if(mSpeed.x >= 0)
+	{
+		mSpeed.x += mFallVelocity;
+	}
+
+	else{
+		mSpeed.x = 0;
+	}
+
+	mHitbox.move(mSpeed);
 }

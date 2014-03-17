@@ -37,16 +37,16 @@ int main()
 
 		if(focus == true)
 		{
-			if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && click == false)
-			{
-				//Terrain::getInstance().createHole(sf::Vector2f(sf::Mouse::getPosition(window)), 100);
-				EntityTool::newBomb(sf::Vector2f(sf::Mouse::getPosition(window)));
-				click = true;
-			}
+			//if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && click == false)
+			//{
+			//	//Terrain::getInstance().createHole(sf::Vector2f(sf::Mouse::getPosition(window)), 100);
+			//	EntityTool::newBomb(sf::Vector2f(sf::Mouse::getPosition(window)));
+			//	click = true;
+			//}
 
-			else if(!sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-				click = false;
-			}
+			//else if(!sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+			//	click = false;
+			//}
 
 			EntityTool::update();
 
