@@ -38,9 +38,10 @@ protected:
 	
 	EntityType mType;
 
-private:
 	sf::Clock mFallTimer;
 	sf::Time mFallTime;
+
+private:
 	bool mDestroy;
 
 	static std::vector<Entity*> allEntities;

@@ -42,7 +42,7 @@ void Weapon::update()
 
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && click == false)
 		{
-			Bomb::newBomb(mHitbox.getPosition(), 2, mHitbox.getRotation());
+			Bomb::newBomb(mHitbox.getPosition(), 10, mHitbox.getRotation());
 			click = true;
 		}
 
