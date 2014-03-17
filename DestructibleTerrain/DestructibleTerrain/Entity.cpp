@@ -1,11 +1,14 @@
 #include "Entity.h"
 
+std::vector<Entity*> Entity::allEntities;
 
 Entity::Entity(void)
 {
 	mGravity = 9.82f;
 	mFallVelocity = 1;
 	mDestroy = false;
+
+	allEntities.push_back(this);
 }
 
 
@@ -80,4 +83,39 @@ void Entity::destroy()
 bool Entity::checkDestroy()
 {
 	return mDestroy;
+}
+
+Entity::EntityType Entity::getType()
+{
+	return mType;
+}
+
+
+void Entity::updateAll()
+{
+	for(auto it = allEntities.begin();
+		it != allEntities.end();)
+	{
+		(*it)->update();
+
+		if((*it)->checkDestroy())
+		{
+			delete (*it);
+			it = allEntities.erase(it);
+		}
+
+		else{
+			it++;
+		}
+	}
+}
+
+void Entity::drawAll(sf::RenderWindow& window)
+{
+	for(auto it = allEntities.begin();
+		it != allEntities.end();
+		it++)
+	{
+		(*it)->draw(window);
+	}
 }

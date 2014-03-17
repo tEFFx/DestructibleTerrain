@@ -8,11 +8,21 @@ class Entity
 public:
 	~Entity(void);
 
+	enum EntityType: int{
+		Player = 0,
+		Bomb,
+		Weapon
+	};
+
 	virtual void update();
 	virtual void draw(sf::RenderWindow& window);
 	bool checkPixelCollision(sf::Image& image, sf::Vector2f offset);
 	bool checkPixelCollision(sf::Image& image);
 	bool checkDestroy();
+	EntityType getType();
+
+	static void updateAll();
+	static void drawAll(sf::RenderWindow& window);
 
 protected:
 	Entity(void);
@@ -23,10 +33,14 @@ protected:
 
 	float mGravity;
 	float mFallVelocity;
+	
+	EntityType mType;
 
 private:
 	sf::Clock mFallTimer;
 	sf::Time mFallTime;
 	bool mDestroy;
+
+	static std::vector<Entity*> allEntities;
 };
 

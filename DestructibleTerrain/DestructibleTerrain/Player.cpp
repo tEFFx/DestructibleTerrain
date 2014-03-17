@@ -10,6 +10,8 @@ Player::Player(void)
 
 	mSpeed = 2;
 	mJump = false;
+
+	mType = EntityType::Player;
 }
 
 

@@ -7,6 +7,8 @@ Bomb::Bomb(sf::Vector2f pos)
 	mHitbox.setPosition(pos);
 	mHitbox.setOrigin(25, 25);
 	mHitbox.setFillColor(sf::Color::Black);
+
+	mType = EntityType::Bomb;
 }
 
 
