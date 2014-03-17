@@ -42,7 +42,13 @@ void Weapon::update()
 
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && click == false)
 		{
-			Bomb::newBomb(mHitbox.getPosition(), 10, mHitbox.getRotation());
+			sf::Vector2f gunpos = mHitbox.getPosition();
+			sf::Vector2f barrelpos = sf::Vector2f(cos((mHitbox.getRotation() * 3.14159265359) / 180.f), sin((mHitbox.getRotation() * 3.14159265359) / 180.f));
+			sf::Vector2f newpos;
+			newpos.x = gunpos.x + mHitbox.getSize().x * barrelpos.x;
+			newpos.y = gunpos.y + mHitbox.getSize().x * barrelpos.y;
+
+			Bomb::newBomb(newpos, 10, mHitbox.getRotation());
 			click = true;
 		}
 

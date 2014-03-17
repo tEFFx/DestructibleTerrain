@@ -3,10 +3,11 @@
 
 Bomb::Bomb(sf::Vector2f pos, float speed, float dir)
 {
-	mHitbox.setSize(sf::Vector2f(30, 30));
+	mHitbox.setSize(sf::Vector2f(30, 10));
 	mHitbox.setPosition(pos);
-	mHitbox.setOrigin(15, 15);
+	mHitbox.setOrigin(15, 5);
 	mHitbox.setFillColor(sf::Color::Black);
+	mHitbox.setRotation(dir);
 
 	mType = EntityType::Bomb;
 
@@ -17,6 +18,8 @@ Bomb::Bomb(sf::Vector2f pos, float speed, float dir)
 	std::cout << dir << std::endl;
 
 	mFallTimer.restart();
+
+	mPos0 = pos;
 }
 
 
@@ -44,6 +47,14 @@ void Bomb::update()
 	{
 		destroy();
 	}
+
+	if(mPos0 != mHitbox.getPosition())
+	{
+		float dir = atan2(mPos0.y - mHitbox.getPosition().y, mPos0.x - mHitbox.getPosition().x) * (180.f / 3.14159265359f);
+		mHitbox.setRotation(dir);
+	}
+
+	mPos0 = mHitbox.getPosition();
 
 	mSpeed.y = mFallSpeed + mFallVelocity;
 

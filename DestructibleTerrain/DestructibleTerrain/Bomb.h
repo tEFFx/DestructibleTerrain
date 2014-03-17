@@ -12,6 +12,7 @@ private:
 	~Bomb(void);
 
 	sf::Vector2f mSpeed;
+	sf::Vector2f mPos0;
 	float mFallSpeed;
 };
 
