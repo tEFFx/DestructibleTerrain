@@ -37,7 +37,7 @@ void Player::update()
 		mHitbox.move(mSpeed, 0);
 	}
 
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) &&
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) &&
 		checkPixelCollision(Terrain::getInstance().getTerrainImage(), sf::Vector2f(0, 40)))
 	{
 		mJump = true;
