@@ -82,6 +82,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bazooka.cpp" />
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityTool.cpp" />
@@ -91,6 +92,7 @@
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bazooka.h" />
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityTool.h" />

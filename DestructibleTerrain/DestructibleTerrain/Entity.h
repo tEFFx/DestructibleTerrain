@@ -19,6 +19,7 @@ public:
 	bool checkPixelCollision(sf::Image& image, sf::Vector2f offset);
 	bool checkPixelCollision(sf::Image& image);
 	bool checkDestroy();
+	sf::RectangleShape* getBox();
 	EntityType getType();
 	Entity* isCollidingWith();
 

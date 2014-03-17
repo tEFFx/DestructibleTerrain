@@ -12,6 +12,7 @@ int main()
 	bool focus = true;
 
 	Entity* player = EntityTool::newPlayer();
+	EntityTool::newBazooka(sf::Vector2f(800, 200));
 
     while (window.isOpen())
     {

@@ -13,7 +13,6 @@ public:
 protected:
 	Weapon(void);
 
-	sf::RectangleShape mHitbox;
 	sf::Clock mFireTimer;
 	sf::Time mFireTime;
 	Entity* mEntity;

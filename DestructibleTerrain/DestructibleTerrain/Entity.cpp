@@ -85,6 +85,11 @@ bool Entity::checkDestroy()
 	return mDestroy;
 }
 
+sf::RectangleShape* Entity::getBox()
+{
+	return &mHitbox;
+}
+
 Entity::EntityType Entity::getType()
 {
 	return mType;
@@ -93,7 +98,8 @@ Entity::EntityType Entity::getType()
 Entity* Entity::isCollidingWith()
 {
 	for(auto it = allEntities.begin();
-		it != allEntities.end();)
+		it != allEntities.end();
+		it++)
 	{
 		if(this != (*it) &&
 			mHitbox.getGlobalBounds().intersects((*it)->mHitbox.getGlobalBounds()))

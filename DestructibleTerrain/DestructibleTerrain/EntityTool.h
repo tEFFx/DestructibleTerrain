@@ -3,12 +3,14 @@
 #include "Entity.h"
 #include "Bomb.h"
 #include "Player.h"
+#include "Bazooka.h"
 
 
 struct EntityTool
 {
 	static Entity* newBomb(sf::Vector2f pos);
 	static Entity* newPlayer();
+	static Entity* newBazooka(sf::Vector2f pos);
 
 	static void update();
 	static void draw(sf::RenderWindow& window);

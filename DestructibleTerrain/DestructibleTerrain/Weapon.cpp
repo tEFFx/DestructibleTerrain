@@ -20,18 +20,23 @@ void Weapon::update()
 	{
 		Entity::update();
 
-		if(isCollidingWith()->getType() == EntityType::Player)
+		Entity* temp = isCollidingWith();
+
+		if(temp != NULL &&
+			temp->getType() == EntityType::Player)
 		{
 			mEntity = isCollidingWith();
 		}
 
-		else if(isCollidingWith()->getType() == EntityType::Weapon)
+		else if(temp != NULL &&
+			temp->getType() == EntityType::Weapon)
 		{
 			mEntity = NULL;
 		}
 	}
 
 	else{
+		mHitbox.setPosition(mEntity->getBox()->getPosition());
 		//do stuff
 	}
 }
