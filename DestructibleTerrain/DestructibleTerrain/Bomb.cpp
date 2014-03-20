@@ -1,13 +1,15 @@
 #include "Bomb.h"
 
 
-Bomb::Bomb(sf::Vector2f pos, float speed, float dir)
+Bomb::Bomb(sf::Vector2f pos, float speed, float dir, float radius)
 {
 	mHitbox.setSize(sf::Vector2f(30, 10));
 	mHitbox.setPosition(pos);
 	mHitbox.setOrigin(15, 5);
 	mHitbox.setFillColor(sf::Color::Black);
 	mHitbox.setRotation(dir);
+
+	mRadius = radius;
 
 	mType = EntityType::Bomb;
 
@@ -27,9 +29,9 @@ Bomb::~Bomb(void)
 {
 }
 
-Entity* Bomb::newBomb(sf::Vector2f pos, float speed, float dir)
+Entity* Bomb::newBomb(sf::Vector2f pos, float speed, float dir, float radius)
 {
-	return new Bomb(pos, speed, dir);
+	return new Bomb(pos, speed, dir, radius);
 }
 
 void Bomb::update()
@@ -39,7 +41,7 @@ void Bomb::update()
 
 	if(checkPixelCollision(Terrain::getInstance().getTerrainImage(), sf::Vector2f(0, 0)))
 	{
-		Terrain::getInstance().createHole(mHitbox.getPosition(), 100);
+		Terrain::getInstance().createHole(mHitbox.getPosition(), mRadius);
 		destroy();
 	}
 

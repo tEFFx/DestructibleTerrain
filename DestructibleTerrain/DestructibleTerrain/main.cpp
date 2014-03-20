@@ -12,7 +12,8 @@ int main()
 	bool focus = true;
 
 	Entity* player = EntityTool::newPlayer();
-	EntityTool::newBazooka(sf::Vector2f(800, 200));
+	EntityTool::newBazooka(sf::Vector2f(700, 200));
+	EntityTool::newMachinegun(sf::Vector2f(1000, 100));
 
     while (window.isOpen())
     {

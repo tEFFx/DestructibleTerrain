@@ -20,29 +20,26 @@ Weapon::~Weapon(void)
 void Weapon::update()
 {
 	static bool click = false;
+	static bool push = false;
 	mFireTime = mFireTimer.getElapsedTime();
+	Entity* temp = isCollidingWith();
 
 	if(mEntity == NULL)
 	{
 		Entity::update();
 
-		Entity* temp = isCollidingWith();
-
 		if(temp != NULL &&
 			temp->getType() == EntityType::Player &&
-			sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+			sf::Keyboard::isKeyPressed(sf::Keyboard::E) &&
+			push == false)
 		{
 			mEntity = temp;
-		}
-
-		else if(temp != NULL &&
-			temp->getType() == EntityType::Weapon)
-		{
-			mEntity = NULL;
+			push = true;
 		}
 	}
-
+	
 	else{
+		
 		mHitbox.setPosition(mEntity->getBox()->getPosition());
 
 		if(mFire == true &&
@@ -66,7 +63,7 @@ void Weapon::update()
 			newpos.x = gunpos.x + mHitbox.getSize().x * barrelpos.x;
 			newpos.y = gunpos.y + mHitbox.getSize().x * barrelpos.y;
 
-			Bomb::newBomb(newpos, 10, mHitbox.getRotation());
+			Bomb::newBomb(newpos, 10, mHitbox.getRotation(), mRadius);
 		}
 
 		else if(!sf::Mouse::isButtonPressed(sf::Mouse::Left) && 
@@ -75,7 +72,21 @@ void Weapon::update()
 			click = false;
 		}
 
+		if(mEntity != NULL &&
+			mEntity->isCollidingExcept(this) != NULL &&
+			sf::Keyboard::isKeyPressed(sf::Keyboard::E) &&
+			push == false)
+		{
+			mEntity = NULL;
+			push = true;
+		}
 	}
+
+	if(!sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+	{
+		push = false;
+	}
+
 }
 
 void Weapon::draw(sf::RenderWindow& window)

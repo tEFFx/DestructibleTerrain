@@ -10,6 +10,11 @@ Entity* EntityTool::newBazooka(sf::Vector2f pos)
 	return Bazooka::newBazooka(pos);
 }
 
+Entity* EntityTool::newMachinegun(sf::Vector2f pos)
+{
+	return Machinegun::newMachinegun(pos);
+}
+
 void EntityTool::update()
 {
 	Entity::updateAll();

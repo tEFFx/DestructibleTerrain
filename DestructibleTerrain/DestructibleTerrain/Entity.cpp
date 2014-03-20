@@ -112,6 +112,24 @@ Entity* Entity::isCollidingWith()
 	return NULL;
 }
 
+Entity* Entity::isCollidingExcept(Entity* except)
+{
+	auto temp = allEntities;
+	for(auto it = temp.begin();
+		it != temp.end();
+		it++)
+	{
+		if(this != (*it) &&
+			except != (*it) &&
+			mHitbox.getGlobalBounds().intersects((*it)->mHitbox.getGlobalBounds()))
+		{
+			return (*it);
+		}
+	}
+
+	return NULL;
+}
+
 
 void Entity::updateAll()
 {

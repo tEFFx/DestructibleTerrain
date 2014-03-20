@@ -39,6 +39,9 @@
     <ClCompile Include="Bazooka.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Machinegun.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Terrain.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Bazooka.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Machinegun.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

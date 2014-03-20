@@ -86,6 +86,7 @@
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityTool.cpp" />
+    <ClCompile Include="Machinegun.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Terrain.cpp" />
@@ -96,6 +97,7 @@
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityTool.h" />
+    <ClInclude Include="Machinegun.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Weapon.h" />

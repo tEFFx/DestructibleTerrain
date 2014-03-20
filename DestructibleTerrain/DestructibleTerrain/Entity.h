@@ -22,6 +22,7 @@ public:
 	sf::RectangleShape* getBox();
 	EntityType getType();
 	Entity* isCollidingWith();
+	Entity* isCollidingExcept(Entity* except);
 
 	static void updateAll();
 	static void drawAll(sf::RenderWindow& window);

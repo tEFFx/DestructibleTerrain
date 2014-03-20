@@ -9,6 +9,7 @@ Bazooka::Bazooka(sf::Vector2f pos)
 	mHitbox.setFillColor(sf::Color::Black);
 
 	mFireRate = 1000;
+	mRadius = 100;
 	mAuto = true;
 }
 
