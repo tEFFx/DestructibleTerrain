@@ -6,6 +6,9 @@ Weapon::Weapon(void)
 	mEntity = NULL;
 
 	mType = EntityType::Weapon;
+
+	mFireTime = mFireTimer.getElapsedTime();
+	mFire = false;
 }
 
 
@@ -17,6 +20,7 @@ Weapon::~Weapon(void)
 void Weapon::update()
 {
 	static bool click = false;
+	mFireTime = mFireTimer.getElapsedTime();
 
 	if(mEntity == NULL)
 	{
@@ -25,9 +29,10 @@ void Weapon::update()
 		Entity* temp = isCollidingWith();
 
 		if(temp != NULL &&
-			temp->getType() == EntityType::Player)
+			temp->getType() == EntityType::Player &&
+			sf::Keyboard::isKeyPressed(sf::Keyboard::E))
 		{
-			mEntity = isCollidingWith();
+			mEntity = temp;
 		}
 
 		else if(temp != NULL &&
@@ -40,8 +45,21 @@ void Weapon::update()
 	else{
 		mHitbox.setPosition(mEntity->getBox()->getPosition());
 
-		if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && click == false)
+		if(mFire == true &&
+			mFireTime.asMilliseconds() > mFireRate)
 		{
+			mFire = false;
+		}
+
+		if(mFire == false &&
+			(click == false || mAuto == true) &&
+			sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			mFireTime = mFireTimer.getElapsedTime();
+			click = true;
+			mFire = true;
+			mFireTimer.restart();
+			
 			sf::Vector2f gunpos = mHitbox.getPosition();
 			sf::Vector2f barrelpos = sf::Vector2f(cos((mHitbox.getRotation() * 3.14159265359) / 180.f), sin((mHitbox.getRotation() * 3.14159265359) / 180.f));
 			sf::Vector2f newpos;
@@ -49,12 +67,14 @@ void Weapon::update()
 			newpos.y = gunpos.y + mHitbox.getSize().x * barrelpos.y;
 
 			Bomb::newBomb(newpos, 10, mHitbox.getRotation());
-			click = true;
 		}
 
-		else if(!sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+		else if(!sf::Mouse::isButtonPressed(sf::Mouse::Left) && 
+			click == true &&
+			mAuto == false){
 			click = false;
 		}
+
 	}
 }
 

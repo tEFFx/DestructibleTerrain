@@ -7,6 +7,9 @@ Bazooka::Bazooka(sf::Vector2f pos)
 	mHitbox.setSize(sf::Vector2f(100, 20));
 	mHitbox.setOrigin(20, 10);
 	mHitbox.setFillColor(sf::Color::Black);
+
+	mFireRate = 1000;
+	mAuto = true;
 }
 
 

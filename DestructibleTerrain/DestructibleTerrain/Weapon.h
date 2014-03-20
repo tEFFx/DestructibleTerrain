@@ -20,5 +20,8 @@ protected:
 	Entity* mEntity;
 	float mRadius, mFireRate;
 	bool mAuto;
+
+private:
+	bool mFire;
 };
 
