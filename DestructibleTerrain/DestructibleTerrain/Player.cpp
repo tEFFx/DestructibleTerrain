@@ -3,7 +3,7 @@
 
 Player::Player(void)
 {
-	mHitbox.setPosition(200, 200);
+	mHitbox.setPosition(500, 200);
 	mHitbox.setSize(sf::Vector2f(50, 80));
 	mHitbox.setOrigin(25, 40);
 	mHitbox.setFillColor(sf::Color::Magenta);
