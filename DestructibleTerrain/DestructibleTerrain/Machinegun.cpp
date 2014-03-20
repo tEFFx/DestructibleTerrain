@@ -4,12 +4,12 @@
 Machinegun::Machinegun(sf::Vector2f pos)
 {
 	mHitbox.setPosition(pos);
-	mHitbox.setSize(sf::Vector2f(75, 15));
-	mHitbox.setOrigin(32, 7);
+	mHitbox.setSize(sf::Vector2f(50, 10));
+	mHitbox.setOrigin(10, 5);
 	mHitbox.setFillColor(sf::Color::Blue);
 
 	mFireRate = 100;
-	mRadius = 20;
+	mRadius = 25;
 	mAuto = true;
 }
 

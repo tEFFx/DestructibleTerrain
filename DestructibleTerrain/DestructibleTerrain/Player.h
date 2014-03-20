@@ -1,5 +1,6 @@
 #pragma once
-#include "entity.h"
+#include "Entity.h"
+#include "Weapon.h"
 class Player :
 	public Entity
 {
@@ -14,5 +15,6 @@ private:
 	Player(void);
 	bool mJump;
 	float mSpeed;
+	Entity* mWeapon;
 };
 

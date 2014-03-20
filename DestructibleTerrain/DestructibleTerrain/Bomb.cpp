@@ -11,7 +11,7 @@ Bomb::Bomb(sf::Vector2f pos, float speed, float dir, float radius)
 
 	mRadius = radius;
 
-	mType = EntityType::Bomb;
+	mType = EntityType::BombEnt;
 
 	mSpeed.x = speed * cos((dir * 3.14159265359) / 180.f);
 	mSpeed.y = speed * sin((dir * 3.14159265359) / 180.f);

@@ -17,7 +17,6 @@ protected:
 
 	sf::Clock mFireTimer;
 	sf::Time mFireTime;
-	Entity* mEntity;
 	float mRadius, mFireRate;
 	bool mAuto;
 

@@ -9,9 +9,9 @@ public:
 	~Entity(void);
 
 	enum EntityType: int{
-		Player = 0,
-		Bomb,
-		Weapon
+		PlayerEnt = 0,
+		BombEnt,
+		WeaponEnt
 	};
 
 	virtual void update();
@@ -23,6 +23,7 @@ public:
 	EntityType getType();
 	Entity* isCollidingWith();
 	Entity* isCollidingExcept(Entity* except);
+	void toggleGravity(bool on);
 
 	static void updateAll();
 	static void drawAll(sf::RenderWindow& window);
@@ -34,6 +35,7 @@ protected:
 
 	sf::RectangleShape mHitbox;
 
+	bool mGravityPull;
 	float mGravity;
 	float mFallVelocity;
 	

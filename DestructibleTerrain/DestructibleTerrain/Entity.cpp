@@ -7,6 +7,7 @@ Entity::Entity(void)
 	mGravity = 9.82f;
 	mFallVelocity = 1;
 	mDestroy = false;
+	mGravityPull = true;
 
 	allEntities.push_back(this);
 }
@@ -19,23 +20,30 @@ Entity::~Entity(void)
 
 void Entity::update()
 {
-	if(!checkPixelCollision(Terrain::getInstance().getTerrainImage(), sf::Vector2f(0, mHitbox.getSize().y/2)))
+	if(mGravityPull == true)
 	{
-		mFallTime = mFallTimer.getElapsedTime();
-		mFallVelocity = mGravity * mFallTime.asSeconds();
-		mHitbox.move(0, mFallVelocity);
+		if(!checkPixelCollision(Terrain::getInstance().getTerrainImage(), sf::Vector2f(0, mHitbox.getSize().y/2)))
+		{
+			mFallTime = mFallTimer.getElapsedTime();
+			mFallVelocity = mGravity * mFallTime.asSeconds();
+			mHitbox.move(0, mFallVelocity);
+		}
+
+		else{
+			mFallTimer.restart();
+
+			while(checkPixelCollision(Terrain::getInstance().getTerrainImage(), sf::Vector2f(0, mHitbox.getSize().y/2)))
+			{
+				mHitbox.move(0, -mFallVelocity);
+			}
+
+			mFallVelocity = 1;
+		}
 	}
 
 	else{
 		mFallTimer.restart();
-
-		while(checkPixelCollision(Terrain::getInstance().getTerrainImage(), sf::Vector2f(0, mHitbox.getSize().y/2)))
-		{
-			mHitbox.move(0, -mFallVelocity);
 		}
-
-		mFallVelocity = 1;
-	}
 }
 
 void Entity::draw(sf::RenderWindow& window)
@@ -165,4 +173,9 @@ void Entity::drawAll(sf::RenderWindow& window)
 	{
 		(*it)->draw(window);
 	}
+}
+
+void Entity::toggleGravity(bool on)
+{
+	mGravityPull = on;
 }

@@ -3,9 +3,7 @@
 
 Weapon::Weapon(void)
 {
-	mEntity = NULL;
-
-	mType = EntityType::Weapon;
+	mType = EntityType::WeaponEnt;
 
 	mFireTime = mFireTimer.getElapsedTime();
 	mFire = false;
@@ -19,28 +17,13 @@ Weapon::~Weapon(void)
 
 void Weapon::update()
 {
-	static bool click = false;
-	static bool push = false;
-	mFireTime = mFireTimer.getElapsedTime();
-	Entity* temp = isCollidingWith();
+	Entity::update();
 
-	if(mEntity == NULL)
+	if(mGravityPull == false)
 	{
-		Entity::update();
+		static bool click = false;
 
-		if(temp != NULL &&
-			temp->getType() == EntityType::Player &&
-			sf::Keyboard::isKeyPressed(sf::Keyboard::E) &&
-			push == false)
-		{
-			mEntity = temp;
-			push = true;
-		}
-	}
-	
-	else{
-		
-		mHitbox.setPosition(mEntity->getBox()->getPosition());
+		mFireTime = mFireTimer.getElapsedTime();
 
 		if(mFire == true &&
 			mFireTime.asMilliseconds() > mFireRate)
@@ -71,31 +54,16 @@ void Weapon::update()
 			mAuto == false){
 			click = false;
 		}
-
-		if(mEntity != NULL &&
-			mEntity->isCollidingExcept(this) != NULL &&
-			sf::Keyboard::isKeyPressed(sf::Keyboard::E) &&
-			push == false)
-		{
-			mEntity = NULL;
-			push = true;
-		}
 	}
-
-	if(!sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-	{
-		push = false;
-	}
-
 }
 
 void Weapon::draw(sf::RenderWindow& window)
 {
 	Entity::draw(window);
 
-	if(mEntity != NULL)
+	if(mGravityPull == false)
 	{
-		sf::Vector2f entPos = mEntity->getBox()->getPosition();
+		sf::Vector2f entPos = mHitbox.getPosition();
 		sf::Vector2f mouPos = sf::Vector2f(sf::Mouse::getPosition(window));
 		float rot = atan2(mouPos.y - entPos.y, mouPos.x - entPos.x) * (180.f / 3.14159265359f);
 
