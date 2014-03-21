@@ -11,6 +11,8 @@ Bazooka::Bazooka(sf::Vector2f pos)
 	mFireRate = 1000;
 	mRadius = 100;
 	mAuto = true;
+
+	mStartPos = mHitbox.getPosition();
 }
 
 

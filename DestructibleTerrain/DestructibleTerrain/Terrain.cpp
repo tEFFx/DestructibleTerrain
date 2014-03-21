@@ -6,12 +6,6 @@ Terrain::Terrain(void)
 	load();
 }
 
-
-Terrain::~Terrain(void)
-{
-}
-
-
 Terrain& Terrain::getInstance()
 {
 	static Terrain instance;
@@ -39,7 +33,7 @@ void Terrain::draw(sf::RenderWindow& window)
 			it != mHoles.end();
 			it++)
 		{
-			mRenderTexture.draw((*it));
+			mRenderTexture.draw(*(*it));
 		}
 
 		mRenderTexture.display();
@@ -58,11 +52,11 @@ void Terrain::draw(sf::RenderWindow& window)
 
 void Terrain::createHole(sf::Vector2f pos, float radius)
 {
-	sf::CircleShape temp;
-	temp.setRadius(radius);
-	temp.setOrigin(radius, radius);
-	temp.setPosition(pos);
-	temp.setFillColor(sf::Color::Blue);
+	sf::CircleShape* temp = new sf::CircleShape;
+	temp->setRadius(radius);
+	temp->setOrigin(radius, radius);
+	temp->setPosition(pos);
+	temp->setFillColor(sf::Color::Blue);
 	mHoles.push_back(temp);
 	mChanged = true;
 }
@@ -70,4 +64,14 @@ void Terrain::createHole(sf::Vector2f pos, float radius)
 sf::Image& Terrain::getTerrainImage()
 {
 	return mTerrainImg;
+}
+
+void Terrain::reset()
+{
+	while(!mHoles.empty())
+	{
+		delete mHoles[mHoles.size() - 1];
+		mHoles.pop_back();
+	}
+	mChanged = true;
 }

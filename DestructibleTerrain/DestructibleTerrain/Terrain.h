@@ -3,7 +3,7 @@
 #include <vector>
 #include <iostream>
 
-typedef std::vector<sf::CircleShape> Holes;
+typedef std::vector<sf::CircleShape*> Holes;
 
 class Terrain
 {
@@ -13,10 +13,13 @@ public:
 	void draw(sf::RenderWindow& window);
 	void createHole(sf::Vector2f pos, float radius);
 	sf::Image& getTerrainImage();
+	void reset();
 
 private:
 	Terrain(void);
-	~Terrain(void);
+	Terrain(Terrain const&);
+	void operator=(Terrain const&);
+
 	void load();
 
 	sf::RenderTexture mRenderTexture;

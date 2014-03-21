@@ -10,6 +10,7 @@ public:
 	static Entity* newPlayer();
 
 	virtual void update();
+	virtual void reset();
 
 private:
 	Player(void);

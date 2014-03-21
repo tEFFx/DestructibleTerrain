@@ -11,6 +11,8 @@ Machinegun::Machinegun(sf::Vector2f pos)
 	mFireRate = 100;
 	mRadius = 25;
 	mAuto = true;
+
+	mStartPos = mHitbox.getPosition();
 }
 
 

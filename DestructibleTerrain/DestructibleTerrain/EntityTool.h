@@ -14,5 +14,6 @@ struct EntityTool
 
 	static void update();
 	static void draw(sf::RenderWindow& window);
+	static void reset();
 };
 

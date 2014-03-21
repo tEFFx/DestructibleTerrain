@@ -43,7 +43,7 @@ void Entity::update()
 
 	else{
 		mFallTimer.restart();
-		}
+	}	
 }
 
 void Entity::draw(sf::RenderWindow& window)
@@ -166,16 +166,32 @@ void Entity::updateAll()
 
 void Entity::drawAll(sf::RenderWindow& window)
 {
-	auto temp = allEntities;
-	for(auto it = temp.begin();
-		it != temp.end();
+	for(auto it = allEntities.begin();
+		it != allEntities.end();
 		it++)
 	{
 		(*it)->draw(window);
 	}
 }
 
+void Entity::resetAll()
+{
+	for(auto it = allEntities.begin();
+		it != allEntities.end();
+		it++)
+	{
+		(*it)->reset();
+	}
+}
+
 void Entity::toggleGravity(bool on)
 {
 	mGravityPull = on;
+}
+
+void Entity::reset()
+{
+	mHitbox.setPosition(mStartPos);
+	mHitbox.setRotation(0);
+	toggleGravity(true);
 }

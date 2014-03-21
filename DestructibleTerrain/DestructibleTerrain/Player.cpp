@@ -14,6 +14,8 @@ Player::Player(void)
 	mType = EntityType::PlayerEnt;
 
 	mWeapon = NULL;
+
+	mStartPos = mHitbox.getPosition();
 }
 
 
@@ -108,4 +110,10 @@ void Player::update()
 	{
 		mHitbox.move(0, mFallVelocity);
 	}
+}
+
+void Player::reset()
+{
+	Entity::reset();
+	mWeapon = NULL;
 }

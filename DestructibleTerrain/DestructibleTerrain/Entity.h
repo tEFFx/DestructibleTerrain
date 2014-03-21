@@ -24,9 +24,11 @@ public:
 	Entity* isCollidingWith();
 	Entity* isCollidingExcept(Entity* except);
 	void toggleGravity(bool on);
+	virtual void reset();
 
 	static void updateAll();
 	static void drawAll(sf::RenderWindow& window);
+	static void resetAll();
 
 protected:
 	Entity(void);
@@ -43,6 +45,7 @@ protected:
 
 	sf::Clock mFallTimer;
 	sf::Time mFallTime;
+	sf::Vector2f mStartPos;
 
 private:
 	bool mDestroy;

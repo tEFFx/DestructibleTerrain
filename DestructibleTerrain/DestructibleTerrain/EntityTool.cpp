@@ -24,3 +24,8 @@ void EntityTool::draw(sf::RenderWindow& window)
 {
 	Entity::drawAll(window);
 }
+
+void EntityTool::reset()
+{
+	Entity::resetAll();
+}
